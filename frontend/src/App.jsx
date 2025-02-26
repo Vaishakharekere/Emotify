@@ -1,15 +1,24 @@
 import React from 'react';
-import nav from './pages/nav';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import auth from './pages/auth';  // Use relative path here
+import Auth from './pages/auth';
+import Profile from './pages/Profile';
+import History from './pages/History'; // Import Profile page
+import { TopNav, BottomNav } from './pages/nav';
 
 const App = () => {
   return (
-    <div>
-      <Home />
-      {/* You can add auth component where necessary */}
-    </div>
+    <BrowserRouter>
+      <TopNav isLoggedIn={true} navigate={() => {}} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/profile" element={<Profile />} /> // Add profile route
+        <Route path="/history" element={<History />} />
+      </Routes>
+      <BottomNav />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

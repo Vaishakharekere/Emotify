@@ -1,74 +1,85 @@
-import React from "react";
-import Card from 'react-bootstrap/Card';
-import Carousel from 'react-bootstrap/Carousel';
-import { TbCameraSelfie } from "react-icons/tb";
-import { MdKeyboardVoice } from "react-icons/md";
-import { BsChatDotsFill } from "react-icons/bs";
-import Navbar from '../pages/nav';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/home.css";
+import { Container, Button, Carousel } from "react-bootstrap";
+import { FaCamera, FaMicrophone, FaComments } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { TopNav, BottomNav } from '../pages/nav'; // Import named exports
 
-// Replace ExampleCarouselImage with actual image components or imports
-const ExampleCarouselImage = ({ text }) => (
-  <div style={{ height: '300px', background: '#ddd', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <h5>{text}</h5>
-  </div>
-);
+const LandingPage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
+  const navigate = useNavigate();
 
-function BorderExample() {
+  const handleLoginToggle = () => {
+    setIsLoggedIn((prev) => !prev); // Toggle login state for demonstration
+  };
+
   return (
-    
-    <>
-    <Navbar/>
-    
-      <div className="d-flex flex-wrap justify-content-center gap-3">
-        <Card border="primary" style={{ width: '18rem' }}>
-          <Card.Header>Camera</Card.Header>
-          <Card.Body>
-            <TbCameraSelfie size={24} className="me-2" />
-          </Card.Body>
-        </Card>
+    <div>
+      {/* Top Navigation */}
+      <TopNav isLoggedIn={isLoggedIn} navigate={navigate} />
 
-        <Card border="secondary" style={{ width: '18rem' }}>
-          <Card.Header>Voice</Card.Header>
-          <Card.Body>
-            <MdKeyboardVoice size={24} className="me-2" />
-          </Card.Body>
-        </Card>
+      {/* Main Content */}
+      <Container className="text-center my-5">
+        <h1>Welcome to Emotify</h1>
+        <p>Experience music that matches your emotions.</p>
 
-        <Card border="success" style={{ width: '18rem' }}>
-          <Card.Header>Chat</Card.Header>
-          <Card.Body>
-            <BsChatDotsFill size={24} className="me-2" />
-          </Card.Body>
-        </Card>
-      </div>
+        <div className="mt-4 text-center">
+  {isLoggedIn ? (
+    <div className="d-flex justify-content-center gap-3">
+      <Button variant="primary" className="btn-lg d-flex align-items-center gap-2">
+        <FaCamera size={28} /> Camera
+      </Button>
+      <Button variant="success" className="btn-lg d-flex align-items-center gap-2">
+        <FaMicrophone size={28} /> Voice
+      </Button>
+      <Button variant="warning" className="btn-lg d-flex align-items-center gap-2">
+        <FaComments size={28} /> Chat
+      </Button>
+    </div>
+  ) : (
+    <p className="text-muted">Please login to access voice, camera features.</p>
+  )}
+</div>
 
-      <Carousel>
-        <Carousel.Item interval={1000}>
-          <ExampleCarouselImage text="First slide" />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
 
-        <Carousel.Item interval={500}>
-          <ExampleCarouselImage text="Second slide" />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+        {/* Carousel */}
+        <Carousel className="mt-4">
+          <Carousel.Item interval={1000}>
+            <img className="d-block w-100" src="https://i.pinimg.com/474x/a4/d9/53/a4d95318f57a312066fbfe3c85079716.jpg"alt="First slide" />
+            <Carousel.Caption>
+              <h3>Get Started with Emotify</h3>
+              <p>Let Emotify play music that matches your emotions.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={500}>
+            <img className="d-block w-100" src="https://i.pinimg.com/474x/1f/6f/c0/1f6fc036744b7ba4ca73b21c9bddfd8b.jpg" alt="Second slide" />
+            <Carousel.Caption>
+              <h3>AI-Powered Music Selection</h3>
+              <p>Our AI analyzes your mood to curate the perfect playlist.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src="https://i.pinimg.com/474x/c7/e5/62/c7e5622cf852922dd5fb285288802ea2.jpg" alt="Third slide" />
+            <Carousel.Caption>
+              <h3>Connect and Enjoy</h3>
+              <p>Seamless music streaming with Spotify integration.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
 
-        <Carousel.Item>
-          <ExampleCarouselImage text="Third slide" />
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    </>
+        {/* Login Toggle Button for Testing */}
+        <div className="mt-4">
+          <Button onClick={handleLoginToggle}>
+            {isLoggedIn ? "Logout" : "Start"}
+          </Button>
+        </div>
+      </Container>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
+    </div>
   );
-}
+};
 
-export default BorderExample;
+export default LandingPage;

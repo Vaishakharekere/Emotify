@@ -1,0 +1,74 @@
+/* home.css */
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 100px;
+  }
+  
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .carousel-caption p {
+    font-size: 18px;
+  }
+  
+  .carousel img {
+    border-radius: 10px;
+  }
+  
+  .button-group {
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    width: 150px;
+    height: 50px;
+    margin: 0 10px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+  
+  .button-group button:hover {
+    transform: scale(1.05);
+  }
+  
+  .login-toggle-button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  
+  .login-toggle-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .top-nav {
+    background-color: #333;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+  }
+  
+  .bottom-nav {
+    background-color: #333;
+    padding: 10px;
+    border-top: 1px solid #444;
+  }
+  
+  .top-nav a, .bottom-nav a {
+    color: rgb(140, 61, 61);
+    text-decoration: none;
+  }
+  
+  .top-nav a:hover, .bottom-nav a:hover {
+    color: #ccc;
+  }
+  
