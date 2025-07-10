@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+
+.form-container{
+   background-color:white;
+   padding:20px;
+   border-radius:10px;
+   box-shadow: 0 4px 8px rgba(105, 97, 97, 0.1);
+   width:300px;
+}
+.form-toggle{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom :20px;
+
+}
+.form-toggle .active{
+  background-color: black;
+  color:white;
+
+}
+
